@@ -5,9 +5,9 @@ from email.mime.multipart import MIMEMultipart
 
 def send_email():
     # Email configuration
-    sender_email = os.environ.get("SENDER_EMAIL", "your_email@gmail.com")
-    sender_password = os.environ.get("SENDER_PASSWORD", "your_app_password")
-    receiver_email = "jiayuexue30@gmail.com"
+    sender_email = os.environ.get("EMAIL_USER", "your_email")
+    sender_password = os.environ.get("EMAIL_PASS", "your_app_password")
+    receiver_email = os.environ.get("EMAIL_TO", "your_receiver")
     
     # Create message
     message = MIMEMultipart()
@@ -20,7 +20,7 @@ def send_email():
     message.attach(MIMEText(body, "plain"))
     
     # Check if credentials are properly set
-    if sender_email == "your_email@gmail.com" or sender_password == "your_app_password":
+    if sender_email == "your_email" or sender_password == "your_app_password":
         print("Email credentials not set. Please configure SENDER_EMAIL and SENDER_PASSWORD environment variables.")
         return False
     
