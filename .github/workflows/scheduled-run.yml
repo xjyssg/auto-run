@@ -20,5 +20,10 @@ jobs:
         with:
           python-version: '3.x'
 
+      - name: Print workflow trigger information
+        run: |
+          echo "Workflow triggered by: ${{ github.event_name }}"
+          echo "Current time: $(date)"
+          
       - name: Run Python script
         run: python run.py
