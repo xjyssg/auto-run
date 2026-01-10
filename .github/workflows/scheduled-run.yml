@@ -24,6 +24,8 @@ jobs:
         run: |
           echo "Workflow triggered by: ${{ github.event_name }}"
           echo "Current time: $(date)"
+          echo "Repository: ${{ github.repository }}"
+          echo "Ref: ${{ github.ref }}"
           
       - name: Run Python script
         run: python run.py
