@@ -5,9 +5,9 @@ from email.mime.multipart import MIMEMultipart
 
 def send_email():
     # Email configuration
-    sender_email = os.environ.get("EMAIL_USER", "your_email")
-    sender_password = os.environ.get("EMAIL_PASS", "your_app_password")
-    receiver_email = os.environ.get("EMAIL_TO", "your_receiver")
+    sender_email = os.environ["EMAIL_USER"]
+    sender_password = os.environ["EMAIL_PASS"]
+    receiver_email = os.environ["EMAIL_TO"]
     
     # Create message
     message = MIMEMultipart()
