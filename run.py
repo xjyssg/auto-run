@@ -19,6 +19,11 @@ def send_email():
     body = "This is an automated email sent every 5 minutes."
     message.attach(MIMEText(body, "plain"))
     
+    # Check if credentials are properly set
+    if sender_email == "your_email@gmail.com" or sender_password == "your_app_password":
+        print("Email credentials not set. Please configure SENDER_EMAIL and SENDER_PASSWORD environment variables.")
+        return False
+    
     try:
         # Connect to Gmail's SMTP server
         server = smtplib.SMTP("smtp.gmail.com", 587)
@@ -32,6 +37,9 @@ def send_email():
         
         print("Email sent successfully!")
         return True
+    except smtplib.SMTPAuthenticationError as e:
+        print(f"Email authentication failed. Please check your email credentials. Error: {e}")
+        return False
     except Exception as e:
         print(f"Error sending email: {e}")
         return False
