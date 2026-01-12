@@ -18,7 +18,7 @@ def send_email():
     message = MIMEMultipart()
     message["From"] = sender_email
     message["To"] = receiver_email
-    message["Subject"] = "Scheduled Notification"
+    message["Subject"] = "Joellll Japan Hotel Notification"
     
     # Email body
     body = "This is an automated email sent every 5 minutes."
