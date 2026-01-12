@@ -10,7 +10,7 @@ TARGET_ROOM_KEYWORDS = [
 
 
 def fetch_planlist_html(
-    date="2026-04-25 00:00:00",
+    date="2026-02-25 00:00:00",
     nights=1
 ):
     """
