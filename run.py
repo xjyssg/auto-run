@@ -3,6 +3,11 @@ import smtplib
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 
+# Import the function from fetch.py
+import sys
+sys.path.append('.')
+from fetch import check_target_room_found
+
 def send_email():
     # Email configuration
     sender_email = os.environ["EMAIL_USER"]
@@ -45,5 +50,9 @@ def send_email():
         return False
 
 if __name__ == "__main__":
-    print("hello world")
-    send_email()
+    print("Checking for target room...")
+    if check_target_room_found():
+        print("Target room found! Sending email notification...")
+        send_email()
+    else:
+        print("Target room not found.")
