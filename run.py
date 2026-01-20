@@ -8,7 +8,7 @@ import sys
 sys.path.append('.')
 from fetch import check_target_room_found
 
-def send_email():
+def send_email(content):
     # Email configuration
     sender_email = os.environ["EMAIL_USER"]
     sender_password = os.environ["EMAIL_PASS"]
@@ -21,7 +21,7 @@ def send_email():
     message["Subject"] = "Joellll Japan Hotel Notification"
     
     # Email body
-    body = "This is an automated email sent every 5 minutes."
+    body = f"Found available date{content}."
     message.attach(MIMEText(body, "plain"))
     
     # Check if credentials are properly set
@@ -51,8 +51,16 @@ def send_email():
 
 if __name__ == "__main__":
     print("Checking for target room...")
-    if check_target_room_found():
-        print("Target room found! Sending email notification...")
-        send_email()
+    date_list = ["2026-02-21 00:00:00",
+                 "2026-02-22 00:00:00"
+                 "2026-02-23 00:00:00",
+                 "2026-02-25 00:00:00"]
+    result = []
+    for date in date_list:
+        if check_target_room_found(date):
+            print("Target room found at %s!", date)
+            result.append(date)
+    if result:
+        send_email("".join(result))
     else:
         print("Target room not found.")

@@ -99,9 +99,9 @@ def main():
             print(f"    roomName:   {r['roomName']}")
 
 
-def check_target_room_found():
+def check_target_room_found(date):
     """ 检查目标房型是否找到，返回 True/False """
-    html = fetch_planlist_html()
+    html = fetch_planlist_html(date)
     if not html.strip():
         return False
     results = find_target_plan_room(html)
