@@ -1,4 +1,5 @@
 import os
+import time
 import smtplib
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
@@ -61,6 +62,7 @@ if __name__ == "__main__":
         if check_target_room_found(date):
             print(f"Target room found at {date}!")
             result.append(date)
+        time.sleep(1)
     if result:
         send_email("".join(result))
     else:
