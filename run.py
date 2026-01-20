@@ -52,13 +52,14 @@ def send_email(content):
 if __name__ == "__main__":
     print("Checking for target room...")
     date_list = ["2026-02-21 00:00:00",
-                 "2026-02-22 00:00:00"
+                 "2026-02-22 00:00:00",
                  "2026-02-23 00:00:00",
                  "2026-02-25 00:00:00"]
     result = []
     for date in date_list:
+        print(f"Checking date {date}")
         if check_target_room_found(date):
-            print("Target room found at %s!", date)
+            print(f"Target room found at {date}!")
             result.append(date)
     if result:
         send_email("".join(result))

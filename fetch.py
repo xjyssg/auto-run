@@ -40,7 +40,7 @@ def fetch_planlist_html(
         "Referer": "https://reserve.489ban.net/",
     }
 
-    resp = requests.get(url, params=params, headers=headers, timeout=15, verify=False)
+    resp = requests.get(url, params=params, headers=headers, timeout=15, verify=True)
     resp.raise_for_status()
 
     data = resp.json()
